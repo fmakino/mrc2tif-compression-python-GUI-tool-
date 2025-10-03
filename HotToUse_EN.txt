@@ -1,0 +1,80 @@
+
+Here's the translation of your document into English:
+
+---
+
+# **File Compression Tool with Watchdog - Manual**
+
+## **Overview**
+This program monitors a specified folder and converts newly added `.mrc` files into `.tif` format. It uses the `mrc2ti` command, combining parallel processing and monitoring functionality for efficient file handling. It can also process existing `.mrc` files, with options to delete original files after compression and to set an interval for confirming file copy completion.
+
+---
+
+## **System Requirements**
+- **OS**: Windows
+- **Python Version**: Recommended 3.10 or higher
+- **Dependencies**: The following libraries are required:
+  - `tkinter` (Standard Library)
+  - `concurrent.futures` (Standard Library)
+
+
+---
+
+## **How to Use**
+
+### **1. Launching the Program**
+Run the Python file to start the GUI, which is built with Tkinter.
+
+### **2. Configurations**
+
+#### **Folder Selection**
+- **Input Folder**: Specify the folder to monitor. When new files are added here, they will be automatically processed.
+- **Output Folder**: Specify the folder where the converted files will be saved.
+
+#### **Wildcard**
+- **Filename Wildcard**: Define a pattern for file names to monitor and convert. For example, using `*.mrc` will target only files with the `.mrc` extension.
+
+#### **Parallel Processing Settings**
+- **CPU Count for Parallel Processing**: Specify the number of CPUs to use for parallel processing. Higher values allow more files to be processed simultaneously but may increase CPU load.
+
+#### **Interval Settings**
+- **File Check Interval (seconds)**: Set the time interval (in seconds) to check if a new file has finished copying before starting conversion.
+
+#### **Deletion Option**
+- **Delete original files after compression**: Choose whether to delete the original `.mrc` files after conversion. Enable this option to automatically remove the source files after successful compression.
+
+---
+
+### **3. Starting Monitoring**
+
+Once all settings are configured, click the `Start Monitoring` button to begin monitoring the specified folder and processing files. 
+
+- The program first converts existing `.mrc` files in the specified folder and then monitors for new file additions.
+- Conversion will only start once the program confirms that file copying is complete, using parallel processing for efficiency.
+
+### **4. Stopping the Program**
+To stop the program, close the window or press `Ctrl + C` to force quit.
+
+---
+
+## **Mechanics**
+
+- **Monitoring**: Uses the `watchdog` library to detect new files in the monitored folder and triggers the conversion process for `.mrc` files.
+- **Copy Completion Check**: Monitors file size over a set period and begins conversion when the file size remains unchanged.
+- **Parallel Processing**: Utilizes `ProcessPoolExecutor` from `concurrent.futures` to process multiple files concurrently, maximizing efficiency.
+
+---
+
+## **Notes**
+- Ensure that the `mrc2ti -s -c lzw` command works properly on your system.
+- When handling a large number of files or setting a high CPU count, monitor system performance to avoid resource overload.
+
+---
+
+Please use this manual as a reference for safely and efficiently managing file conversions. If you have any questions, feel free to ask!
+
+---
+
+Would you like to refine this translation or focus on specific sections?
+
+
